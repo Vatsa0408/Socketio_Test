@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=500px, initial-scale=1, shrink-to-fit=no">
+
+        <title>Preview Stream</title>
+        <script src="/js/jquery.min.js"></script>   
+        <script src="/js/socket.io.js"></script>   
+    </head>
+    
+    <body>
+        <img id="play" style="width:400px; height: 400px;">
+            </br>
+        <div id="log"></div>
+
+        <script type="text/javascript">
+    
+    var socket = io.connect('http://localhost:8001');
+            
+            setInterval(function(){
+                socket.on('stream',function(image){
+                $('#play').attr('src',image);
+                $('#log').text(image);
+            });       
+                },100);
+        </script>
+
+    </body>
+</html>
